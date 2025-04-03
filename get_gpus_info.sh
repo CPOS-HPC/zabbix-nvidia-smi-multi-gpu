@@ -1,6 +1,13 @@
 #!/bin/bash
 
 result=$(/usr/bin/nvidia-smi -L)
+
+# Check if $result is null or empty
+if [ -z "$result" ]; then
+  echo -e "{\n\"data\":[]\n}"
+  exit 0
+fi
+
 declare -a gpu_data
 
 while IFS= read -r line; do
