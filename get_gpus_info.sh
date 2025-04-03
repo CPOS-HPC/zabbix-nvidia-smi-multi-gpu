@@ -2,9 +2,9 @@
 
 result=$(/usr/bin/nvidia-smi -L)
 
-# Check if $result is null or empty
+# If $result is null or empty, return empty JSON
 if [ -z "$result" ]; then
-  echo -e "{\n\"data\":[]\n}"
+  printf '%s' '{"data":[]}'
   exit 0
 fi
 
