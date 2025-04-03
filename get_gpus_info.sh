@@ -17,4 +17,6 @@ while IFS= read -r line; do
   gpu_entry_array+=("{\"{#GPUINDEX}\":\"$index\", \"{#GPUUUID}\":\"$gpuuuid\"}")
 done < <(printf '%s\n' "$result")
 
-echo -e "{\n\"data\":[\n$(IFS=,; echo "${gpu_entry_array[*]}")\n]\n}"
+echo -e "{\"data\":["
+echo -n "$(IFS=,; echo "${gpu_entry_array[*]}")"
+echo -e "]}"
