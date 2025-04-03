@@ -19,4 +19,4 @@ done < <(printf '%s\n' "$result")
 
 echo -e "{\"data\":["
 echo -n "$(IFS=,; echo "${gpu_entry_array[*]}")"
-echo -e "]}"
+echo -e "\n]}"
