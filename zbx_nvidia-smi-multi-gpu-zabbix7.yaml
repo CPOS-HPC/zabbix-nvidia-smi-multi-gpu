@@ -20,6 +20,13 @@ zabbix_export:
           tags:
             - tag: Application
               value: Nvidia
+        - uuid: 8362516ca8ab48a49a410d8fba71c352
+          name: 'GPU Total Power in Watts'
+          type: CALCULATED
+          key: gpu.power.total
+          value_type: FLOAT
+          units: W
+          params: 'sum(last_foreach(//gpu.power[*]))'
       discovery_rules:
         - uuid: 768334546a4a42a084ba855f1ef7aa7a
           name: 'GPU discovery'
@@ -81,7 +88,7 @@ zabbix_export:
               tags:
                 - tag: Application
                   value: Nvidia
-            - uuid: 05ff0a79a0c34d8d96c0102d3646e771
+            - uuid: a96cad26572f41bf94e07c2de14e4b83
               name: 'GPU [{#GPUINDEX}] Memory Utilization'
               key: 'gpu.memutilization[{#GPUINDEX}]'
               delay: '60'
@@ -215,7 +222,7 @@ zabbix_export:
                   item:
                     host: 'Template Nvidia GPUs Performance'
                     key: 'gpu.memused[{#GPUINDEX}]'
-            - uuid: d1f05ee7c436416a9a743b931729432f
+            - uuid: 18be51c5fd324efcb81115ec3d2dabda
               name: 'GPU {#GPUINDEX} Memory Utilization'
               graph_items:
                 - color: 2774A4
